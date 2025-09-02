@@ -1,0 +1,1 @@
+export type TicTacToeMark = 'X' | 'O';
