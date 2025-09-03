@@ -12,8 +12,5 @@ export default function Page() {
       <Scoreboard />
       <Board />
     </GameContextProvider>
-
-    <XMark></XMark>
-    <OMark></OMark>
   </div>
 }

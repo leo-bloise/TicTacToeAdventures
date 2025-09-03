@@ -1,8 +1,19 @@
 import { useMemo } from "react";
 import { useGame } from "../stores/GameContext"
+import { TicTacToePlayer } from "../lib/ticTacToe/types/TicTacToePlayer";
+import XMark from "./XMark";
+import { OMark } from "./OMark";
 
 type Props = {
     coords: [number, number];
+}
+
+const adaptPlayerToMark = (player?: TicTacToePlayer) => {
+    switch (player?.mark) { 
+        case 'X': return <XMark />;
+        case 'O': return <OMark />;
+        default: return null;
+    }
 }
 
 export default function Tile({ coords }: Props) {
@@ -18,7 +29,7 @@ export default function Tile({ coords }: Props) {
         movePlayer(coords);
     }
 
-    return <div onClick={player === undefined ? handleClick : undefined} className="bg-normal-tile h-30 w-30 m-1 rounded-2xl">
-        {player && <span>{player.mark}</span>}
+    return <div onClick={player === undefined ? handleClick : undefined} className="bg-normal-tile h-30 w-30 m-1 rounded-2xl cursor-pointer flex items-center justify-center">
+        {adaptPlayerToMark(player)}
     </div>
 }
