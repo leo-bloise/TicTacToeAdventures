@@ -17,7 +17,7 @@ const adaptPlayerToMark = (player?: TicTacToePlayer) => {
 }
 
 export default function Tile({ coords }: Props) {
-    const { board, movePlayer } = useGame();
+    const { board, movePlayer, winner } = useGame();
 
     const [x, y] = coords;
 
@@ -29,7 +29,7 @@ export default function Tile({ coords }: Props) {
         movePlayer(coords);
     }
 
-    return <div onClick={player === undefined ? handleClick : undefined} className="bg-normal-tile h-30 w-30 m-1 rounded-2xl cursor-pointer flex items-center justify-center">
+    return <div onClick={(player === undefined && winner === undefined) ? handleClick : undefined} className="bg-normal-tile h-30 w-30 m-1 rounded-2xl cursor-pointer flex items-center justify-center">
         {adaptPlayerToMark(player)}
     </div>
 }

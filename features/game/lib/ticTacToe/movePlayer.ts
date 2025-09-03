@@ -14,9 +14,7 @@ export function movePlayer(
     const [x, y] = coords;
 
     if(y >= yLimit || y < 0) throw new IllegalMove(`y: ${y} coordinate is invalid`);
-    if(x >= xLimit || x < 0) throw new IllegalMove(`x: ${x} coordinate is invalid`);
-
-    //if(board[y][x] !== undefined) throw new IllegalMove(`Already occuped!`);
+    if(x >= xLimit || x < 0) throw new IllegalMove(`x: ${x} coordinate is invalid`);    
     
     const newBoard = cloneBoard(board);
 
