@@ -11,12 +11,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const onLoadWindow = () => {
+    console.log('hello world');
+  };
+
   return (
-    <html lang="en">
+    <html lang="en">      
+      <head>
+        <meta name="google-signin-client_id" content="322401976875-diq1v37u340lbni1a9q2641a1q47vbq9.apps.googleusercontent.com"></meta>
+      </head>
       <body
         className='antialiased bg-background'
       >
         {children}
+        <script src="https://accounts.google.com/gsi/client" async /> 
       </body>
     </html>
   );
