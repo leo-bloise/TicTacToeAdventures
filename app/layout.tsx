@@ -11,11 +11,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const onLoadWindow = () => {
-    console.log('hello world');
-  };
-
   return (
     <html lang="en">      
       <head>
