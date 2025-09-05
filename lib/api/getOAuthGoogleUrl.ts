@@ -9,7 +9,7 @@ export async function getOAUthGoogleUrl(): Promise<URL> {
     const metadata = ServerMetadata.fromEnv();   
 
     const request = new Request(
-        metadata.createUrl('/auth')
+        metadata.createUrl('/oauth/google')
     );
 
     const response = await fetch(request, {

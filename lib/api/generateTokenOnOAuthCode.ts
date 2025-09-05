@@ -9,14 +9,12 @@ export async function generateTokenOnOAuthCode(code: string): Promise<string> {
     const metadata = ServerMetadata.fromEnv(); 
 
     const request = new Request(
-        metadata.createUrl(`/auth/sign-in?code=${code}`)
+        metadata.createUrl(`/oauth/google/sign-in?code=${code}`)
     );
 
     const response = await fetch(request, {
         method: 'GET'
     });
-
-    console.log(response);
 
     if(response.status !== 200) throw new Error();
 

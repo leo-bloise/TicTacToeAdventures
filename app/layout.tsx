@@ -17,7 +17,7 @@ export default function RootLayout({
         <meta name="google-signin-client_id" content="322401976875-diq1v37u340lbni1a9q2641a1q47vbq9.apps.googleusercontent.com"></meta>
       </head>
       <body
-        className='antialiased bg-background'
+        className='antialiased bg-background flex items-center justify-center'
       >
         {children}
         <script src="https://accounts.google.com/gsi/client" async /> 
