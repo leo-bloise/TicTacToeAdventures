@@ -2,7 +2,7 @@
 
 import { SpinLoading } from "@/components/spinLoading";
 import { useGoogleSignIn } from "@/features/auth/hooks/client/useGoogleSignIn";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Page() {
