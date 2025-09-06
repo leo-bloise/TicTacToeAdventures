@@ -13,6 +13,20 @@ export function useGoogleSignIn() {
         return urlResponse.url
     }
 
+    const exchangeCodeToAccessToken = async (code: string | null) => {
+        if(typeof code !== 'string' || code.length == 0) return router.replace('/register');
+
+        const response = await fetch(`/auth/sign-in?code=${code}`, {
+            credentials: 'include'
+        });
+
+        if (response.status != 200) {
+            return router.replace('/register');
+        }
+
+        return router.replace('/')
+    };
+
     const redirectToGoogleLogin = async () => {
         setLoading(true);
         const url = await fetchUrl();
@@ -23,6 +37,7 @@ export function useGoogleSignIn() {
 
     return {
         redirectToGoogleLogin,
+        exchangeCodeToAccessToken,
         loading
     }
 }

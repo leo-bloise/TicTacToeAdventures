@@ -8,6 +8,6 @@ export function GoogleSignInContainer() {
 
     return <GoogleSignInButton 
         handleClick={redirectToGoogleLogin}
-        isLoading={false}
+        isLoading={loading}
     />
 }
