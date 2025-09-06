@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 const publicRoutes = [
     '/auth',
-    '/auth/api',
+    '/auth/generate-url',
     '/auth/sign-in',
     '/register'
 ];

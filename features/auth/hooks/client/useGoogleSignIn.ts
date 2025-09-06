@@ -6,7 +6,7 @@ export function useGoogleSignIn() {
     const [loading, setLoading] = useState(false);
 
     const fetchUrl: () => Promise<string> = async () => {
-        const response = await fetch('/auth/api');
+        const response = await fetch('/auth/generate-url');
 
         const urlResponse = await response.json();
     
