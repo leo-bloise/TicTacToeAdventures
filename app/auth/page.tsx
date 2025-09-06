@@ -1,23 +1,34 @@
-type Props = {
-    searchParams: Promise<{
-        [key: string]: string | string[] | undefined
-    }>
-}
+'use client';
 
-export default async function Page({ searchParams }: Props) {
-    const code = (await searchParams).code;
+import { SpinLoading } from "@/components/spinLoading";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
-    const getToken = async () => {
-        const response = await fetch(`http://localhost:3000/auth/sign-in?code=${code}`);
-        const token = await response.json();
-        
-        return token.token;
-    }
+export default function Page() {
+    const searchParams = useSearchParams();
+    const router = useRouter();
 
-    const token = await getToken();
+    const getCookies = async (code: string | null) => {
+        if(typeof code !== 'string' || code.length == 0) return router.replace('/register');
 
-    return <div>
-        <p className="text-white">Code: {code}</p>
-        <p className="text-white">Token: {token}</p>
-    </div>
+        const response = await fetch(`http://localhost:3000/auth/sign-in?code=${code}`, {
+            credentials: 'include'
+        });
+
+        if (response.status != 200) {
+            return router.replace('/register');
+        }
+
+        return router.replace('/')
+    };
+
+    useEffect(() => {
+        const code = searchParams.get('code');
+
+        getCookies(code);
+    }, []);
+
+    return <main className="w-full h-full flex justify-center items-center">
+        <SpinLoading />
+    </main>
 }
