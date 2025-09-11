@@ -24,7 +24,7 @@ export function useGoogleSignIn() {
             return router.replace('/register');
         }
 
-        return router.replace('/')
+        return router.replace('/');
     };
 
     const redirectToGoogleLogin = async () => {
