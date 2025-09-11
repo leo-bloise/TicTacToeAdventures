@@ -1,14 +1,12 @@
-'use client';
-
-import Board from "@/features/game/components/Board";
-import Scoreboard from "@/features/game/components/Scoreboard";
-import { GameContextProvider } from "@/features/game/stores/GameContext";
+import Menu from "@/features/game/components/Menu";
 
 export default function Page() {
-  return <div className="flex flex-col items-center gap-10">
-    <GameContextProvider>
-      <Scoreboard />
-      <Board />
-    </GameContextProvider>
-  </div>
+    return <article className="flex items-center flex-col justify-center gap-y-10">
+        <header>
+            <h1 className="text-4xl font-bold text-white"> TicTacToe Adventures</h1>
+        </header>
+        <main>
+            <Menu />
+        </main>
+    </article>
 }
